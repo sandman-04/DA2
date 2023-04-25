@@ -1,0 +1,71 @@
+#include <stdio.h>
+
+int isVowel(char c);
+int isConsonant(char c);
+int isSpace(char c);
+int isSpecial(char c);
+void countChars(char str[], int* wordCount, int* vowelCount, int* consonantCount, int* spaceCount, int* specialCount);
+
+int main()
+{
+    char str[100];
+    int wordCount = 0, vowelCount = 0, consonantCount = 0, spaceCount = 0, specialCount = 0;
+
+    printf("Enter a string: ");
+    fgets(str, 100, stdin);
+
+    countChars(str, &wordCount, &vowelCount, &consonantCount, &spaceCount, &specialCount);
+
+    printf("Number of words: %d\n", wordCount);
+    printf("Number of vowels: %d\n", vowelCount);
+    printf("Number of consonants: %d\n", consonantCount);
+    printf("Number of spaces: %d\n", spaceCount);
+    printf("Number of special characters: %d\n", specialCount);
+
+    return 0;
+}
+
+int isVowel(char c)
+{
+    c = tolower(c);
+    return (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u');
+}
+
+int isConsonant(char c)
+{
+    return isalpha(c) && !isVowel(c);
+}
+
+int isSpace(char c)
+{
+    return (c == ' ' || c == '\t' || c == '\n');
+}
+
+int isSpecial(char c)
+{
+    return !isalnum(c) && !isSpace(c);
+}
+
+void countChars(char str[], int* wordCount, int* vowelCount, int* consonantCount, int* spaceCount, int* specialCount)
+{
+    int i = 0;
+    while (str[i] != '\0')
+    {
+        if (isSpace(str[i]))
+        {
+            (*wordCount)++;
+            while (isSpace(str[i]))
+                i++;
+        }
+        else if (isVowel(str[i]))
+            (*vowelCount)++;
+        else if (isConsonant(str[i]))
+            (*consonantCount)++;
+        else if (isSpecial(str[i]))
+            (*specialCount)++;
+        else
+            i++;
+    }
+    (*wordCount)++;
+    (*spaceCount) += (*wordCount) - 1;
+}
