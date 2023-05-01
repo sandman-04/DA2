@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <string.h>
+
+#define PASSWORD "123456789" 
+
+int main() {
+    char matrix[3][3]; 
+    char diagonal[2]; 
+    printf("Enter a 3x3 matrix:\n");
+    for(int i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
+            scanf(" %c", &matrix[i][j]);
+        }
+    }
+    diagonal[0] = matrix[0][0];
+    diagonal[1] = matrix[1][1];
+    diagonal[2] = '\0'
+    if(strcmp(diagonal, PASSWORD) == 0) {
+        printf("Password accepted!\n");
+    } else {
+        printf("Password incorrect!\n");
+    }
+
+    return 0;
+}
