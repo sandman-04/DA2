@@ -1,0 +1,46 @@
+#include <stdio.h>
+
+int getSumOfDigits(int num);
+int isOdd(int num);
+
+int main() {
+    int sum = 0;
+    int numCount = 0;
+
+    for(int i = 1000; i <= 9998; i += 2) {
+
+        sum += i;
+        numCount++;
+    }
+
+    while(sum > 9) {
+        sum = getSumOfDigits(sum);
+    }
+
+    if(isOdd(sum)) {
+        printf("Odd Found\n");
+    } else {
+        printf("Even Found\n");
+    }
+    
+    printf("Total even four-digit numbers: %d", numCount);
+    
+    return 0;
+}
+
+int getSumOfDigits(int num) {
+    int sum = 0;
+    while(num > 0) {
+        sum += num % 10;
+        num /= 10;
+    }
+    return sum;
+}
+
+int isOdd(int num) {
+    if(num % 2 == 1) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
