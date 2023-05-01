@@ -1,0 +1,45 @@
+#include <stdio.h>
+#include <string.h>
+#define MAX_LENGTH 100
+int main() {
+    char str[MAX_LENGTH];
+    int len, freq[256] = {0}, i;
+    char *p, *rep = NULL, *nonrep = NULL;
+    printf("Enter a string: ");
+    fgets(str, MAX_LENGTH, stdin);
+    len = strlen(str) - 1; 
+    for (p = str; *p != '\0'; p++) {
+        freq[(int)*p]++;
+    }
+    printf("Length of the string is: %d\n", len); 
+    printf("Word frequency is: ");
+    for (i = 0; i < 256; i++) {
+        if (freq[i] > 0) {
+            printf("%c:%d ", i, freq[i]);
+        }
+    }
+    printf("\n");
+    for (p = str; *p != '\0'; p++) {
+        if (freq[(int)*p] == 1 && nonrep == NULL) {
+            nonrep = p;
+        } else if (freq[(int)*p] > 1 && rep == NULL) {
+            rep = p;
+        }
+        if (nonrep != NULL && rep != NULL) {
+            break;
+        }
+    }
+    if (rep == NULL) {
+        printf("No repeated characters found in the string.\n");
+    } 
+    else {
+        printf("First repeated character is: %c\n", *rep);
+    }
+    if (nonrep == NULL) {
+        printf("No non-repeated characters found in the string.\n");
+    } 
+    else {
+        printf("First non-repeated character is: %c\n",*nonrep);
+    }
+    return 0;
+}
