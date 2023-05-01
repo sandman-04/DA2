@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+int main() {
+    float chennai[7], delhi[7], haveri[7], gangtok[7];
+    float chennaiTemp, gangtokTemp, delhiTemp, haveriTemp;
+    int i;
+
+    printf("Enter the temperature in Chennai for the week:\n");
+    for (i = 0; i < 7; i++) {
+        printf("Day %d: ", i+1);
+        scanf("%f", &chennai[i]);
+    }
+
+    for (i = 0; i < 7; i++) {
+        delhi[i] = chennai[i] - 8.0;
+        haveri[i] = chennai[i] + 5.0;
+    }
+
+    for (i = 0; i < 7; i++) {
+        gangtok[i] = haveri[i] - delhi[i];
+    }
+
+    chennaiTemp = delhiTemp = haveriTemp = gangtokTemp = 0.0;
+    for (i = 0; i < 7; i++) {
+        chennaiTemp += chennai[i];
+        delhiTemp += delhi[i];
+        haveriTemp += haveri[i];
+        gangtokTemp += gangtok[i];
+    }
+    chennaiTemp /= 7.0;
+    delhiTemp /= 7.0;
+    haveriTemp /= 7.0;
+    gangtokTemp /= 7.0;
+
+    printf("\nAverage temperatures for the week:\n");
+    printf("Chennai: %.2f C\n", chennaiTemp);
+    printf("Delhi: %.2f C\n", delhiTemp);
+    printf("Haveri: %.2f C\n", haveriTemp);
+    printf("Gangtok: %.2f C\n", gangtokTemp);
+
+    return 0;
+}
