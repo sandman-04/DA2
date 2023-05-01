@@ -1,0 +1,19 @@
+#include <stdio.h>
+
+void processString(char *inputString);
+
+int main() {
+    char inputString[100];
+
+    printf("Enter a sentence with two words: ");
+    fgets(inputString, 100, stdin);
+
+    processString(inputString);
+
+    return 0;
+}
+
+void processString(char *inputString) 
+{
+
+}
